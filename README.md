@@ -1,3 +1,3 @@
 # Codes
-There are only JRJ(A Trash!)'s codes!!!
+There are only JRJ(A piece of trash!)'s codes!!!
 JRJ's codes
