@@ -1,6 +1,6 @@
 # Codes
 
-JRJ‘s codes
+nothing QAQ
 
 [Here's some codes form texts.](https://github.com/CE-Automaton/Codes/tree/codes)
 
