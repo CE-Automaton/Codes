@@ -1,3 +1,4 @@
 *.zip
 *.pdf
 *.rar
+!noip2023.zip
