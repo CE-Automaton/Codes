@@ -1,4 +1,6 @@
 *.zip
 *.pdf
 *.rar
+*.mkv
+*.mp4
 !noip2023.zip
