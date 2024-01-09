@@ -1,0 +1,5 @@
+A:https://www.luogu.com.cn/problem/CF1392I
+D:https://www.luogu.com.cn/problem/CF1085G
+F:https://loj.ac/p/6696
+G:https://loj.ac/p/3626
+H:https://loj.ac/p/3653

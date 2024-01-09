@@ -1,0 +1,1 @@
+一般来说"ICPCVPxxx"这种命名方式的号就是std了，有时admin的sol有问题也没办法/wn
