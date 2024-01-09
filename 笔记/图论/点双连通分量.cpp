@@ -1,59 +1,45 @@
-//点双连通分量
 #include <bits/stdc++.h>
 using namespace std;
-const int N = 5e5+5;
-int n, m, u, v, cnt, zhan[N], tot, dfn[N], low[N], op;
-vector <int> to[N], ans[N];
-
-template <typename T> void read(T& x) {
-	x = 0; int f = 0; char c = getchar();
-	while(c < '0' || c > '9') f |= (c == '-'), c=getchar();
-	while(c >= '0' && c <= '9') x=(x<<1)+(x<<3)+(c^48), c=getchar();
-	x=(f ? -x : x);
-}
-int lne; char put[105];
-template <typename T> void write(T x, char ch) {
-	lne = 0; if(x < 0) putchar('-'), x=-x;
-	do { put[++lne]=x%10, x/=10; } while(x);
-	while(lne) putchar(put[lne--]^48);
-	putchar(ch);
-}
-void tarjan(int x, int fa, int son=0) {
-	zhan[++tot]=x, dfn[x]=low[x]=(++op);
-	for(int y : to[x]) 
+int n, m, u, v, zhan1[600005], tot1, dfn[600005], low[600005], cnt, haha;
+vector <int> to[600005];
+vector <int> ans[600005]; 
+void Tarjan(int x, int fa) {
+	low[x]=dfn[x]=++cnt;
+	zhan1[++tot1]=x;
+	int son = 0;
+	for(auto y : to[x]) {
+		if(y == fa) continue;
 		if(!dfn[y]) {
-			tarjan(y, x);
 			++son;
+			Tarjan(y, x);
 			low[x]=min(low[x], low[y]);
-			if(low[y] >= dfn[x]) {
-				++cnt;
-				int z;//这里可以加入建圆方树的代码 
-				do { z=zhan[tot], --tot, ans[cnt].push_back(z); } while(z != y);
-				ans[cnt].push_back(x);
-			} 
+			if(low[y] >= dfn[x]) {//找到割点 
+				ans[++haha].push_back(x);
+				while(1) {
+					int w = zhan1[tot1--];
+					ans[haha].push_back(w);
+					if(w == y) break;
+				}
+			}
 		}
 		else
 			low[x]=min(low[x], dfn[y]);
-	if(son == 0 && x == fa) {//!!! 
-		++cnt;
-		while(tot)
-			ans[cnt].push_back(zhan[tot]), --tot;
 	}
+	if(son == 0 && fa == x) 
+		ans[++haha].push_back(x);
 }
-
-signed main() {
-	read(n), read(m);
-	for(int i = 1; i <= m; ++i)
-		read(u), read(v), to[u].push_back(v), to[v].push_back(u);
-	for(int i = 1; i <= n; ++i)
-		if(!dfn[i]) 
-			tarjan(i, i), tot=0;
-	write(cnt, '\n');
-	for(int i = 1; i <= cnt; ++i) {
-		write(ans[i].size(), ' ');
-		for(int j : ans[i])
-			write(j, ' ');
-		putchar('\n');
+int main() {
+	scanf("%d%d", &n, &m);
+	for(int i = 1; i <= m; ++i) 
+		scanf("%d%d", &u, &v), to[u].push_back(v), to[v].push_back(u);
+	for(int i = 1; i <= n; ++i) 
+		if(!dfn[i]) cnt=0, Tarjan(i, i);
+	printf("%d\n", haha);
+	for(int i = 1; i <= haha; ++i) {
+		printf("%d ", ans[i].size());
+		for(auto j : ans[i])
+			printf("%d ", j);
+		printf("\n");
 	}
 	return 0;
-}
+} 

@@ -1,6 +1,10 @@
 #include <bits/stdc++.h>
+#define File(xxx) freopen(xxx".in","r",stdin),freopen(xxx".out","w",stdout)
 using namespace std;
+typedef long long LL;
 
+template <typename T> inline void debug(T x) { cerr<<x<<'\n'; }
+template <typename T, typename ...T_> inline void debug(T x, T_ ...p) { cerr<<x<<' ', debug(p...); }
 template <typename T> void read(T& x) {
 	x = 0; int f = 0; char c = getchar();
 	while(c < '0' || c > '9') f |= (c == '-'), c=getchar();
