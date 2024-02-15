@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "96a718cd6cd0c9dd",
+        "id": "2dbcb990002dc2ee",
         "type": "tabs",
         "children": [
           {
-            "id": "fb835f26654aae7f",
+            "id": "e0a4c5cc6640b592",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -146,8 +146,6 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "fb835f26654aae7f",
-  "lastOpenFiles": [
-    "笔记/数学/数论/一些函数.md"
-  ]
+  "active": "e0a4c5cc6640b592",
+  "lastOpenFiles": []
 }
