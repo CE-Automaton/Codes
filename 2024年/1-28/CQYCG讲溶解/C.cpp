@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
-#define inf 100000000007LL
 #define File(xxx) freopen(xxx".in","r",stdin),freopen(xxx".out","w",stdout)
 using namespace std;
 typedef long long LL;
-const int N = 1e4+5;
-LL n, m, p[N], dp[N], cp[N], sum[N], cc, ee, ans;
+const int N = 3e3+5;
+int n, m, q, dp[N][N], mx[N], l, r, ll, rr;
+char s[N], t[N];
 
 template <typename T> inline void debug(T x) { cerr<<x; }
 template <typename T, typename ...T_> inline void debug(T x, T_ ...p) { cerr<<x<<' ', debug(p...); }
@@ -21,31 +21,31 @@ template <typename T> void write(T x, char ch) {
 	while(lne) putchar(put[lne--]^48);
 	putchar(ch);
 }
-int comp(int A, int B) {
-	return A > B;
-}
 
 signed main() {
-	File("bread");
-	read(n), read(m);
-	for(int i = 1; i <= n; ++i)
-		read(p[i]);
-	sort(p+1, p+1+n, comp);
-	for(int i = 1; i <= n+1; ++i)
-		dp[i]=inf;
-	for(int i = 1; i <= m; ++i) {
-		read(cc), read(ee);
-		for(int j = 1; j <= n+1; ++j)
-			cp[j]=dp[j];
-		for(int j = 0; j <= n+1; ++j)
-			if(j+cc > n)
-				dp[n+1]=min(dp[n+1], cp[j]+ee);
-			else
-				dp[j+cc]=min(dp[j+cc], cp[j]+ee);
+	File("C");
+	read(n), read(m), read(q);
+	scanf("%s%s", s+1, t+1);
+	for(int i = 1; i <= q; ++i) {
+		read(l), read(r), read(ll), read(rr);
+		for(int o = 0; o <= r-l+1; ++o)
+			for(int p = 0; p <= rr-ll+1; ++p)
+				dp[o][p]=0;
+		for(int p = 0; p <= rr-ll+1; ++p)
+			mx[p]=0;
+		for(int o = l; o <= r; ++o) {
+			for(int p = 0; p <= rr-ll; ++p)
+				if(s[o] == t[p+ll])
+					dp[o-l+1][p+1]=max(dp[o-l+1][p+1], dp[o-l][p]+1);
+			for(int p = 1; p <= rr-ll+1; ++p)
+				mx[p]=max(mx[p], dp[o-l+1][p]);
+			for(int p = 1; p <= rr-ll+1; ++p)
+				dp[o-l+1][p]=max(dp[o-l+1][p], mx[p]);
+		}
+		int mxx = 0;
+		for(int p = 0; p <= rr-ll+1; ++p)
+			mxx=max(mxx, mx[p]);
+		write(mxx, '\n');
 	}
-	for(int i = 1; i <= n+1; ++i)
-		sum[i]=sum[i-1]+p[i], 
-		ans=max(ans, sum[i]-dp[i]);
-	write(ans, '\n');
 	return 0;
 }
