@@ -1,0 +1,6 @@
+A:https://acm.hdu.edu.cn/showproblem.php?pid=5890
+B:https://www.luogu.com.cn/problem/P10083
+C:https://www.luogu.com.cn/problem/P5369
+D:https://www.luogu.com.cn/problem/P10085
+E:https://www.luogu.com.cn/problem/P10084
+F:https://www.luogu.com.cn/problem/P10082
