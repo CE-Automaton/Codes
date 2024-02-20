@@ -1,0 +1,10 @@
+A:https://codeforces.com/gym/102538/problem/H
+B:https://www.luogu.com.cn/problem/AT_hitachi2020_f
+C:https://www.luogu.com.cn/problem/CF1264D2
+D:https://www.luogu.com.cn/problem/CF1450H2
+E:https://www.luogu.com.cn/problem/CF1089I
+F:https://www.luogu.com.cn/problem/P7278
+G:https://www.luogu.com.cn/problem/P4566
+H:https://www.luogu.com.cn/problem/CF1603F
+I:https://www.luogu.com.cn/problem/AT_arc139_f
+J:https://uoj.ac/problem/658
