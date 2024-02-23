@@ -46,11 +46,11 @@
 
 BST 满足任意一个节点的权值都大于等于左子树所有点的权值，且小于等于右子树所有点的权值的性质，我们可以用来求数的排名、前驱和后继，比如这是一棵可爱的 BST：
 
-![img](https://img-blog.csdnimg.cn/54c5d4b7c47e4bcea4c0d20a55c811f9.png)
+![img](./FHQ_Treap-图备份/54c5d4b7c47e4bcea4c0d20a55c811f9.png)
 
 众所周知，当添加点的权值依次递增或递减时，一般 BST 将会退化成丑陋的链，such as：
 
-![img](https://img-blog.csdnimg.cn/e3fb83633f164bc18070fe3cb8d89b8a.png)
+![img](./FHQ_Treap-图备份/e3fb83633f164bc18070fe3cb8d89b8a.png)
 
 那么每次添加点的时间复杂度便能被卡成 $O(n)$，$n$ 大一点就直接 TLE，寄。
 
@@ -64,13 +64,13 @@ Treap 在 BST 的基础上，为每个节点赋上了（随机的）**优先值*
 
 Splay 为有旋 Treap，貌似是依靠左旋右旋节点的伸展操作来维护的 Treap，可以康康具体的图：
 
-![img](https://img-blog.csdnimg.cn/c7d7dd37de2c44edad4cb32c2705bd7c.png)
+![img](./FHQ_Treap-图备份/c7d7dd37de2c44edad4cb32c2705bd7c.png)
 
 详细[戳我](https://oi-wiki.org/ds/splay/)
 
 FHQ Treap 即无旋 Treap，与 Splay 不同，它只依靠分裂、合并能够进行添加节点、查询排名等等操作，分裂、合并如图：
 
-![img](https://img-blog.csdnimg.cn/cc70bb32c6b642a195d709ae5527a1f0.png)
+![img](./FHQ_Treap-图备份/cc70bb32c6b642a195d709ae5527a1f0.png)
 
 FHQ Treap 相对来说代码量较小，也更好理解，应该更适合新手学习吧？
 
@@ -138,7 +138,7 @@ void fl_key(int now, int key, int& x, int& y) {
 
 盗来的模拟代码过程的 Gif 图：
 
-![img](https://img-blog.csdnimg.cn/f9c2947386544c94b46c5166e2ba75b9.gif)
+![img](./FHQ_Treap-图备份/f9c2947386544c94b46c5166e2ba75b9.gif)
 
 上文说过，由于随机性，我们建出来的树堆的深度期望为 $log\ n$ 层，而分裂相当于每层都只搜到了一次，所以分裂一次的时间复杂度是 $O(log_2n)$
 
@@ -146,7 +146,7 @@ void fl_key(int now, int key, int& x, int& y) {
 
 而第二种是按子树大小分裂，即给定 $siz$，优先保留左子树，分裂出大小小于等于 $siz$ 的树堆 $x$，和剩余的树堆 $y$（可能没有），如图：
 
-![img](https://img-blog.csdnimg.cn/c9306063d8204fe992473db20e4f9143.png)
+![img](./FHQ_Treap-图备份/c9306063d8204fe992473db20e4f9143.png)
 
 这种分裂可以用于一些特殊的操作（比如说[文艺平衡树](https://www.luogu.com.cn/problem/P3391)中的翻转区间），在普通平衡树中可用于求排名对应的值，带详解注释代码如下：
 
@@ -176,7 +176,7 @@ void fl_siz(int now, int siz, int& x, int& y) {
 
 合并操作只有一种，但是要求合并的两个树堆 $x$、$y$，树堆 $x$ 的所有点的权值都要严格小于树堆 $y$ 的任意点，（但本蒟蒻还有幸遇见过答辩题要用 fhq treap 合并有交集的树堆的），而此处就要用到我们赋予的优先值啦，如图（可能看起来有点难懂）：
 
-![img](https://img-blog.csdnimg.cn/a7de3d9904354402a12bda955fa3837b.png)
+![img](./FHQ_Treap-图备份/a7de3d9904354402a12bda955fa3837b.png)
 
 如图所示，合并时优先考虑优先值，并以优先的点为合并后的父节点，然后再将非优先点与优先点的儿子合并，这是一个递归的过程，要注意的是合并要从祖先开始，且一般合并是直接合并两个无交集的树，若是有交集那么这个合并就只能用添加点的做法（详见下文），此处直接上代码吧：
 
@@ -204,7 +204,7 @@ int merge(int x, int y) {//合并时需要已经满足x的所有点的权值小�
 
 既然我们已经会分裂、合并了，那么如果想要添加一个值为 $X$ 的点，我们可以直接将原树堆按 $key = X$，以权值大小分裂，然后新建点，将分裂出的树堆 $x$ 和新建点合并后再和分裂出的树堆 $y$ 合并，时间复杂度为 $O(log_2n)$，如图：
 
-![img](https://img-blog.csdnimg.cn/f363831026704419a2adcebd02313140.png)
+![img](./FHQ_Treap-图备份/f363831026704419a2adcebd02313140.png)
 
 此处为什么不直接合并原树堆和新建点呢？那是因为我们写的 $merge$ 合并函数要求合并的是无交集的两树堆，且树堆 $x$ 的所有点的权值都要严格小于树堆 $y$ 的任意点，所以我们必须要先分裂再合并以保证树堆的正确性，代码如下：
 
@@ -220,7 +220,7 @@ void insert(int key) {
 
 删除一个值为 $X$ 的点的话可以先按 $key = X$，以权值大小分裂得到树堆 $x$、$y$，再按 $key = X-1$，以权值大小分裂树堆 $x$，得到树堆 $z$、$a$，然后将树堆 $a$ 的根节点丢掉（即合并 $a$ 的左右儿子，不合并 $a$ 的根节点，这就相当于删了一个点），所有树堆依次合并，时间复杂度依然为 $O(log_2n)$，如图：
 
-![img](https://img-blog.csdnimg.cn/f5234a3517ce41ffbff85703376e01f7.png)
+![img](./FHQ_Treap-图备份/f5234a3517ce41ffbff85703376e01f7.png)
 
  代码如下：
 
@@ -448,11 +448,11 @@ int main() {
 
 假设有一个树：
 
-![img](https://img-blog.csdnimg.cn/f40d641bf57e46939bf3411c2bab12f1.png)
+![img](./FHQ_Treap-图备份/f40d641bf57e46939bf3411c2bab12f1.png)
 
 因为 Treap 是一棵二叉树，而原序列建出来的 Treap 能按中序遍历输出得到原序列，我们可以考虑最后用中序遍历输出答案。若是将图中的树中序遍历，输出为 $c-a-d-u-b$，而整个区间翻转就相当于把中序遍历给翻转了，即 $b-u-d-a-c$，我们再将新中序遍历结果对应的树画出来：
 
-![img](https://img-blog.csdnimg.cn/ffd25253a60840c3be33e2c019e4d1c7.png)
+![img](./FHQ_Treap-图备份/ffd25253a60840c3be33e2c019e4d1c7.png)
 
 可以发现，翻转中序遍历结果相当于将树上每个点的左右儿子互换……
 
