@@ -1,0 +1,2 @@
+法1例子：https://www.luogu.com.cn/problem/CF1192B
+法2例子：https://www.luogu.com.cn/problem/P4271、2024-2-26模拟赛的t1
