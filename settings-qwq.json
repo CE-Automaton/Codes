@@ -1,0 +1,18 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "background.enabled": true,
+    "background.useDefault": false,
+    "background.fullscreen": {
+        "images": ["file:///home/asus/桌面/哇.jpg"],
+        "opacity": 0.75,
+        "size": "cover",
+        "position": "absolute",
+        "interval": 0
+    },
+    "background.useFront": false,
+    "workbench.colorTheme": "Default Light+",
+    "explorer.confirmDelete": false,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "explorer.confirmDragAndDrop": false,
+    "window.zoomLevel": 1
+}
