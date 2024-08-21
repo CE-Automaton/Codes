@@ -1,0 +1,3 @@
+t2原：agc003d https://www.luogu.com.cn/problem/AT_agc003_d
+t3原：https://www.acmicpc.net/problem/14034
+t4原：https://www.luogu.com.cn/problem/AT_ddcc2017_final_e
