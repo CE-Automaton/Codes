@@ -1,0 +1,3 @@
+t1：https://www.luogu.com.cn/problem/AT_agc004_d
+t2：https://vjudge.net.cn/problem/Baekjoon-17716、https://www.luogu.com.cn/problem/AT_joisc2015_a
+t3：https://www.luogu.com.cn/problem/P8991
