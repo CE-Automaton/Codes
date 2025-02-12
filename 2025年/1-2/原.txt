@@ -1,0 +1,4 @@
+t1：https://atcoder.jp/contests/arc130/tasks/arc130_f
+优质题解：https://www.luogu.com.cn/article/qek7me2y
+
+t2：https://www.luogu.com.cn/problem/P6778
