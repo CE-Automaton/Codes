@@ -1,0 +1,3 @@
+t1 https://codeforces.com/gym/103261/problem/L
+t2 loj3073
+t3 https://qoj.ac/problem/4215
